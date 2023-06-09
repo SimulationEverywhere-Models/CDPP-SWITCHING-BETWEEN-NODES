@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDPlusPlus_Builder_Version_1.0.0>
+  <top>
+    <components> source@Source&#xd;</components>
+    <components> switchNode&#xd;</components>
+    <components> sink1@Sink&#xd;</components>
+    <components> sink2@Sink&#xd;</components>
+    <out> packetTotal&#xd;</out>
+    <out> packetsReceived1&#xd;</out>
+    <out> packetsReceived2&#xd;</out>
+    <out> gateWay&#xd;</out>
+    <Link> packetTotal@source packetTotal&#xd;</Link>
+    <Link> packetOut@source In@switchNode&#xd;</Link>
+    <Link> Out1@switchNode sinkIn@sink1&#xd;</Link>
+    <Link> Out2@switchNode sinkIn@sink2&#xd;</Link>
+    <Link> gateWay@switchNode gateWay&#xd;</Link>
+    <Link> packetsReceived@sink1 packetsReceived1&#xd;</Link>
+    <Link> packetsReceived@sink2 packetsReceived2&#xd;</Link>
+  </top>
+  <switchNode>
+    <components> queue@Queue&#xd;</components>
+    <components> switch@Switch&#xd;</components>
+    <in> In&#xd;</in>
+    <out> Out1&#xd;</out>
+    <out> Out2&#xd;</out>
+    <out> gateWay&#xd;</out>
+    <Link> In in@queue&#xd;</Link>
+    <Link> out@queue switchIn@switch&#xd;</Link>
+    <Link> switchOut1@switch done@queue&#xd;</Link>
+    <Link> switchOut2@switch done@queue&#xd;</Link>
+    <Link> gateWay@switch done@queue&#xd;</Link>
+    <Link> switchOut1@switch Out1&#xd;</Link>
+    <Link> switchOut2@switch Out2&#xd;</Link>
+    <Link> gateWay@switch gateWay&#xd;</Link>
+  </switchNode>
+  <source>
+    <preparation> 00:00:10:000&#xd;</preparation>
+  </source>
+  <queue>
+    <preparation> 00:00:03:000&#xd;</preparation>
+  </queue>
+  <switch>
+    <preparation> 00:00:02:000&#xd;</preparation>
+  </switch>
+  <sink1>
+    <preparation> 00:00:01:000&#xd;</preparation>
+    <address> 0&#xd;</address>
+  </sink1>
+  <sink2>
+    <preparation> 00:00:01:000&#xd;</preparation>
+    <address> 1  &#xd;</address>
+  </sink2>
+</CDPlusPlus_Builder_Version_1.0.0>
